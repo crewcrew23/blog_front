@@ -28,7 +28,7 @@ const TagsPage = () => {
                             <Post
                                 _id={obj._id}
                                 title={obj.title}
-                                imageUrl={obj.imageURL && `http://localhost:5000${obj.imageURL}`}
+                                imageUrl={obj.imageURL && `${process.env.REACT_APP_API_URL}${obj.imageURL}`}
                                 user={{
                                     fullName:obj.user.userName,
                                     avatarUrl:obj.user.avatarURL

@@ -40,7 +40,7 @@ export const FullPost = () => {
       <Post
           id={data._id}
           title={data.title}
-          imageUrl={data.imageURL && `http://localhost:5000${data.imageURL}`}
+          imageUrl={data.imageURL && `${process.env.REACT_APP_API_URL}${data.imageURL}`}
           user={{
               fullName:isPostsLoading ? 'loading': user.items.userName,
               avatarUrl:isPostsLoading ? 'loading': user.items.avatarURL

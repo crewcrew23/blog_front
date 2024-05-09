@@ -30,13 +30,17 @@ export const Index = () => {
   }
 
   const submit = async () =>{
-    const comment = {
-      comment:text,
-      owner:user.items
-    }
+    if (initialState.data === null){
+      window.alert('Только авторизованные пользователи могут оставлять комментарий.')
+    }else {
+      const comment = {
+        comment:text,
+        owner:user.items
+      }
 
-    await axios.post(`/addComment/${id}`, comment)
-    window.location.reload()
+      await axios.post(`/addComment/${id}`, comment)
+      window.location.reload()
+    }
 
   }
   return (
@@ -44,11 +48,11 @@ export const Index = () => {
       <div className={styles.root}>
         <Avatar
           classes={{ root: styles.avatar }}
-          src={initialState.data.avatarURL || ''}
+          src={initialState.data !== null ? initialState.data.avatarURL : ''}
         />
         <div className={styles.form}>
           <TextField
-            label="Написать комментарий"
+            label={initialState.data !== null ? "Написать комментарий": "Только авторизованные пользователи могут оставлять комментарий."}
             variant="outlined"
             maxRows={10}
             value={text}
@@ -56,7 +60,7 @@ export const Index = () => {
             multiline
             fullWidth
           />
-          <Button onClick={submit} type='submit' variant="contained">Отправить</Button>
+          <Button disabled={initialState.data === null ? true : false} onClick={submit} type='submit' variant="contained">Отправить</Button>
         </div>
       </div>
     </>
