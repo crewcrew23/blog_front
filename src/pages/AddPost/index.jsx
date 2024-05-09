@@ -138,7 +138,7 @@ export const AddPost = () => {
       />
       <TextField classes={{ root: styles.tags }}
                  variant="standard"
-                 placeholder="Тэги"
+                 placeholder="укажите гэги без # через пробел"
                  fullWidth
                  value={tags}
                  onChange={e => setTags(e.target.value)}

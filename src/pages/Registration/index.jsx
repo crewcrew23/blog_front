@@ -16,11 +16,11 @@ export const Registration = () => {
     const dispath = useDispatch()
     const {register, handleSubmit, setError, formState:{errors, isValid}} = useForm({
         defaultValues:{
-            name:'Ivan',
-            secondName:'Ivanov',
-            userName:'Ivan123',
-            email:'test@ru',
-            password:'123456',
+            name:'',
+            secondName:'',
+            userName:'',
+            email:'',
+            password:'',
         },
         mode:'onChange'
     })
